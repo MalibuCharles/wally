@@ -1,12 +1,7 @@
-from audioop import reverse
-from dataclasses import field
-from operator import mod
-from pyexpat import model
-from re import template
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
-from .forms import PostForm, EditForm
+from .forms import PostForm
 from django.urls import reverse_lazy
 # def home(request):
 #     return render(request, 'home.html', {})
@@ -29,9 +24,9 @@ class AddPostView(CreateView):
 
 class UpdatePostView(UpdateView):
     model = Post
-    form_class = EditForm
+    # form_class = EditForm
     template_name = 'update_post.html'
-    # fields = ['title', 'title_tag', 'body']    
+    fields = ['title', 'title_tag', 'body']    
 
 class DeletePostView(DeleteView):
     model = Post
