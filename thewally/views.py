@@ -19,6 +19,7 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
+    success_url = reverse_lazy('home')
     # fields = ('__all__')
     # fields = ('title', 'body')
 
@@ -27,6 +28,8 @@ class UpdatePostView(UpdateView):
     # form_class = EditForm
     template_name = 'update_post.html'
     fields = ['title', 'title_tag', 'body']    
+    success_url = reverse_lazy('home')
+
 
 class DeletePostView(DeleteView):
     model = Post

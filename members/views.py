@@ -9,4 +9,10 @@ from .forms import SignUpForm
 class UserRegisterView(generic.CreateView):
     form_class = SignUpForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('login')
+    # success_url = reverse_lazy('login')
+
+    def get_success_url(self):
+        from django.core.mail import send_mail
+        send_mail('Subject here', 'Here is the message.', 'malibu@gruups.com', ['berthonise@gmail.com'],
+        fail_silently=False)
+        return self.request.POST.get('next', '/members/login/')
