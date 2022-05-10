@@ -13,6 +13,6 @@ class UserRegisterView(generic.CreateView):
 
     def get_success_url(self):
         from django.core.mail import send_mail
-        send_mail('Subject here', 'Here is the message.', 'malibu@gruups.com', ['berthonise@gmail.com'],
+        send_mail('Welcome to Wally.', 'Thank you for signing up for Wally! We make sharing your thoughts easy!', 'malibu@gruups.com', ['berthonise@gmail.com'],
         fail_silently=False)
         return self.request.POST.get('next', '/members/login/')
